@@ -7,12 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import th.ac.ku.restaurant.dto.SignupDto;
 import th.ac.ku.restaurant.model.User;
 import th.ac.ku.restaurant.service.SignupService;
 
 @Controller
 public class SignupController {
-
     @Autowired
     private SignupService signupService;
 
@@ -22,13 +22,12 @@ public class SignupController {
     }
 
     @PostMapping("/signup")
-    public String signupUser(@ModelAttribute User user, Model model) {
-
+    public String signupUser(@ModelAttribute SignupDto user, Model model) {
         if (signupService.isUsernameAvailable(user.getUsername())) {
             signupService.createUser(user);
             model.addAttribute("signupSuccess", true);
         } else {
-            model.addAttribute("signupError", "Username not available");
+            model.addAttribute("signupError", "Username is not available");
         }
         return "signup";
     }
