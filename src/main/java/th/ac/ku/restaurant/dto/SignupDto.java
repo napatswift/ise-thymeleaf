@@ -2,6 +2,7 @@ package th.ac.ku.restaurant.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -28,4 +29,8 @@ public class SignupDto {
     @Pattern(regexp="^(ROLE_ADMIN|ROLE_USER)$",
             message="Role is in an incorrect format.")
     private String role;
+
+    @Email
+    @NotBlank
+    private String email;
 }
