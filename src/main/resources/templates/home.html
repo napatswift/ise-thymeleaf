@@ -12,10 +12,6 @@
 
     <h1 class="display-6">Welcome to Restaurant Web Application</h1>
 
-    <p>
-        <span th:text="${greeting}"></span>, <span th:text="${name}"></span>!
-    </p>
-
     <div sec:authorize="isAuthenticated()">
         <p>Khun <b><span sec:authentication="name"></span></b></p>
         <a class="btn" th:href="@{/logout}">Log Out</a>
